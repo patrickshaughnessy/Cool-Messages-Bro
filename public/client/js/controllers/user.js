@@ -3,7 +3,7 @@
 angular
   .module('app')
   .controller('userCtrl', ['$scope', '$auth', 'UserService', '$state', function($scope, $auth, UserService, $state){
-    console.log('userCtrl')
+
     if (!$auth.isAuthenticated()){
       return $state.go('home');
     }
@@ -24,7 +24,6 @@ angular
 
     UserService.getMessages().then(function(res){
       var user = res.data.user;
-      console.log('user', user)
 
       var conversations = {};
       res.data.messages.forEach(function(message){
