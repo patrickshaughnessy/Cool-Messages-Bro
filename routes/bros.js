@@ -15,10 +15,10 @@ router.get('/', ensureAuthenticated, function(req, res){
 
 router.post('/', ensureAuthenticated, function(req, res){
   var senderId = req.user;
-  var receiver = req.body.bro;
+  var receiverId = req.body.bro;
   var message = req.body.message;
 
-  User.sendMessage(senderId, receiver, message, function(err, savedMessage){
+  User.sendMessage(senderId, receiverId, message, function(err, savedMessage){
     res.send(savedMessage);
   })
 })

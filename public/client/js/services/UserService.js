@@ -12,9 +12,9 @@ angular
       return $http.get('/bros');
     }
 
-    this.sendMessage = function(bro, message){
+    this.sendMessage = function(broId, message){
       var data = {};
-      data.bro = bro;
+      data.bro = broId;
       data.message = message;
       return $http.post('/bros', data);
     }

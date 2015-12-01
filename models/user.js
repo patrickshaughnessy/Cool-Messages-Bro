@@ -31,12 +31,12 @@ userSchema.methods.createJWT = function(){
   return jwt.encode(payload, process.env.JWT_SECRET);
 }
 
-userSchema.statics.sendMessage = function(senderId, receiver, message, cb){
-  console.log('inside static', senderId, receiver);
+userSchema.statics.sendMessage = function(senderId, receiverId, message, cb){
+  console.log('inside static', senderId, receiverId);
 
   User.findById(senderId, function(err, sendingBro){
 
-    User.findById(receiver._id, function(err, receivingBro){
+    User.findById(receiverId, function(err, receivingBro){
       var newMessage = new Message({
         sender: sendingBro._id,
         receiver: receivingBro._id,

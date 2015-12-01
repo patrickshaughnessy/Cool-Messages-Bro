@@ -1,0 +1,9 @@
+img.profilePic {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+}
+
+.center {
+  text-align: center;
+}

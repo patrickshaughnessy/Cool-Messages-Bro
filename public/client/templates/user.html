@@ -1,30 +1,65 @@
-<h1>Welcome!, {{user.displayName}}</h1>
 
-<img src="{{user.picture}}" alt="">
+<div class="row">
+  <div class="col-xs-12">
+    <img class="profilePic" src="{{user.picture}}">
+    <h1 class="center">Sup, {{user.displayName}}!</h1>
+    <h4 class="center">Check your messages below or send a new message to a bro!</h4>
+  </div>
+</div>
 
-<h1>The Bros</h1>
-<ul>
-  <li ng-repeat="bro in bros track by $index">
-    {{bro.displayName}}
+<div class="row">
+  <div class="col-xs-4 bros">
+    <h1>The Bros</h1>
+    <div class="row">
+      <div class="col-xs-6 thumbnail" ng-repeat="bro in bros track by $index" ng-if="notSelf(bro)">
+        <a ng-click="viewBro(bro)">
+          <img ng-src="{{bro.picture}}">
+          <div class="caption">
+            <h4>{{bro.displayName}}</h4>
+          </div>
+        </a>
+        <p>Messages <span class="badge">{{conversations[bro._id].length || 0}}</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-8 convos" ng-if="thisBro">
+    <div ng-if="!conversations[thisBro].length">
+      <h3>Snap!</h3>
+      <h5>You haven't sent a message to bro {{thisBroName}} yet</h5>
+      <input type="text" ng-model="message">
+      <button ng-click="sendMessage(sender, message)">Start a bro chat</button>
+    </div>
+    <div ng-if="conversations[thisBro].length">
+      <h3>Your conversation with {{thisBroName}}</h3>
+      <input type="text" ng-model="message">
+      <button ng-click="sendMessage(sender, message)">Send a message to this bro</button>
 
-    <input type="text" ng-model="message">
-    <button ng-click="sendMessage(bro, message)">Send a message to this bro</button>
-  </li>
-</ul>
+      <div class="col-xs-12 messagesArea">
+        <div class="col-xs-12" ng-repeat="message in conversations[thisBro].slice().reverse() track by $index">
+          <div>
+            <div class="col-xs-6 messageBubble" ng-if="message.sender._id === thisBro">
+              <p>{{message.time}}:</p>
+              <blockquote>
+                <p>
+                  {{message.text}}
+                </p>
+                <footer>{{message.sender.displayName}}</footer>
+              </blockquote>
+            </div>
+            <div class="col-xs-6 col-xs-offset-6 messageBubble" ng-if="message.sender._id !== thisBro">
+              <p>{{message.time}}:</p>
+              <blockquote>
+                <p>
+                  {{message.text}}
+                </p>
+                <footer>You</footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<h1>Your messages</h1>
+    </div>
 
-<ul>
-  <li ng-repeat="(sender, messages) in conversations">
-    <h4>Conversation with {{messages[0].sender.displayName}}</h4>
-    <p ng-repeat="message in messages">{{message.time}}:  {{message.text}}, sender: {{message.sender.facebook || message.sender.github}}</p>
-
-  </li>
-</ul>
-
-<!-- <ul>
-  <li ng-repeat="message in messages">
-    <h4>{{message.text}}</h4>
-    <p>from {{message.sender.displayName}}</p>
-  </li>
-</ul> -->
+  </div>
+</div>

@@ -5,6 +5,7 @@
   <title>Cool Messages</title>
 
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="client/css/style.css">
 
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
@@ -20,20 +21,23 @@
 
 </head>
 <body>
-  <h1>Cool Messages, Bro</h1>
 
-  <div class="nav" ng-controller="navCtrl">
-    <div ng-if="!isAuthenticated()">
-      <button ui-sref="home">Home</button>
-      <button ui-sref="login">Login</button>
-    </div>
-    <div ng-if="isAuthenticated()">
-      <button ui-sref="user">My Page</button>
-      <button ng-click="logout()">Logout</button>
+  <div class="container-fluid">
+    <h1>Cool Messages, Bro</h1>
+    <div class="nav" ng-controller="navCtrl">
+      <div ng-if="!isAuthenticated()">
+        <button ui-sref="home">Home</button>
+        <button ui-sref="login">Login</button>
+      </div>
+      <div ng-if="isAuthenticated()">
+        <button ui-sref="user">My Page</button>
+        <button ng-click="logout()">Logout</button>
+      </div>
     </div>
   </div>
 
-  <div ui-view></div>
+
+  <div ui-view class="container-fluid"></div>
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
