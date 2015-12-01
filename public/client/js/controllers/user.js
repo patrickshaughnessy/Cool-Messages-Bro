@@ -40,7 +40,6 @@ angular
 
 
       });
-      console.log('conversations', conversations);
       $scope.conversations = conversations;
 
       $scope.notSelf = function(bro, user){
@@ -51,10 +50,11 @@ angular
       }
 
       $scope.viewBro = function(bro){
-        console.log(bro._id);
         $scope.thisBro = bro._id
         $scope.thisBroName = bro.displayName
       }
+
+      console.log('end of users', $scope.user, $scope.bros, $scope.thisBro)
     })
 
 
