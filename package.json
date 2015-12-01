@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start":"node",
-    "postinstall":"npm i && bower i"
+    "postinstall":"bower i"
   },
   "keywords": [],
   "author": "",
