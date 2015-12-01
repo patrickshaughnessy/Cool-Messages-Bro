@@ -27,12 +27,12 @@
       <h3>Snap!</h3>
       <h5>You haven't sent a message to bro {{thisBroName}} yet</h5>
       <input type="text" ng-model="message">
-      <button ng-click="sendMessage(sender, message)">Start a bro chat</button>
+      <button ng-click="sendMessage(thisBro, message)">Start a bro chat</button>
     </div>
     <div ng-if="conversations[thisBro].length">
       <h3>Your conversation with {{thisBroName}}</h3>
       <input type="text" ng-model="message">
-      <button ng-click="sendMessage(sender, message)">Send a message to this bro</button>
+      <button ng-click="sendMessage(thisBro, message)">Send a message to this bro</button>
 
       <div class="col-xs-12 messagesArea">
         <div class="col-xs-12" ng-repeat="message in conversations[thisBro].slice().reverse() track by $index">

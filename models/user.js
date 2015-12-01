@@ -32,10 +32,11 @@ userSchema.methods.createJWT = function(){
 }
 
 userSchema.statics.sendMessage = function(senderId, receiverId, message, cb){
-
+  console.log('send message', senderId, receiverId, message)
   User.findById(senderId, function(err, sendingBro){
-
+    console.log('sendingbro', sendingBro)
     User.findById(receiverId, function(err, receivingBro){
+      console.log('receivingbro', receivingBro)
       var newMessage = new Message({
         sender: sendingBro._id,
         receiver: receivingBro._id,
