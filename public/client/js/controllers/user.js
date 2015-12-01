@@ -42,19 +42,20 @@ angular
       });
       console.log('conversations', conversations);
       $scope.conversations = conversations;
+
+      $scope.notSelf = function(bro, user){
+        if (bro._id !== $scope.user._id){
+          return true
+        }
+        return false;
+      }
+
+      $scope.viewBro = function(bro){
+        console.log(bro._id);
+        $scope.thisBro = bro._id
+        $scope.thisBroName = bro.displayName
+      }
     })
 
-    $scope.notSelf = function(bro, user){
-      if (bro._id !== $scope.user._id){
-        return true
-      }
-      return false;
-    }
-
-    $scope.viewBro = function(bro){
-      console.log(bro._id);
-      $scope.thisBro = bro._id
-      $scope.thisBroName = bro.displayName
-    }
 
   }])
