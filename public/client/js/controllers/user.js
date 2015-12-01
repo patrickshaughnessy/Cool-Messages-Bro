@@ -24,8 +24,32 @@ angular
     }
 
     UserService.getMessages().then(function(res){
-      console.log(res);
-      $scope.messages = res.data
+      console.log('messages', res.data);
+      // $scope.messages = res.data;
+      var user = res.data.user;
+
+      var conversations = {};
+      res.data.messages.forEach(function(message){
+        var sender = message.sender._id;
+        var receiver = message.receiver._id;
+
+        // conversation exists
+        if (conversations[sender]){
+          conversations[sender].push(message);
+
+        // first entry in conversation
+        } else {
+          // create a new entry at sender
+          conversations[sender] = [message];
+
+          // 
+
+        }
+
+
+      });
+      console.log('conversations', conversations);
+      $scope.conversations = conversations;
     })
 
   }])

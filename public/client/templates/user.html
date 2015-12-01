@@ -15,9 +15,16 @@
 <h1>Your messages</h1>
 
 <ul>
-  <li ng-repeat="message in messages">
-    <h4>{{message.text}}</h4>
-    <p>from {{message.sender.displayName}}</p>    
+  <li ng-repeat="(sender, messages) in conversations">
+    <h4>Conversation with {{messages[0].sender.displayName}}</h4>
+    <p ng-repeat="message in messages">{{message.time}}:  {{message.text}}, sender: {{message.sender.facebook || message.sender.github}}</p>
 
   </li>
 </ul>
+
+<!-- <ul>
+  <li ng-repeat="message in messages">
+    <h4>{{message.text}}</h4>
+    <p>from {{message.sender.displayName}}</p>
+  </li>
+</ul> -->
