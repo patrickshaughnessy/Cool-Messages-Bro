@@ -10,6 +10,7 @@ var app = express();
 
 var mongoose = require('mongoose');
 var mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/oauthmessageboard';
+
 mongoose.connect(mongoUrl, function(err){
   if (err) return console.log('Error connecting to Mongodb: ', err);
   console.log('Connected to MongoDB: ', mongoUrl);
@@ -24,6 +25,10 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.use('/', require('./routes/index'));
+app.use('/auth', require('./routes/auth'));
+app.use('/users', require('./routes/users'));
+app.use('/bros', require('./routes/bros'));
+app.use('/messages', require('./routes/messages'));
 
 app.listen(PORT, function(){
   console.log('Listening on port ', PORT);

@@ -1,0 +1,23 @@
+<h1>Welcome!, {{user.displayName}}</h1>
+
+<img src="{{user.picture}}" alt="">
+
+<h1>The Bros</h1>
+<ul>
+  <li ng-repeat="bro in bros track by $index">
+    {{bro.displayName}}
+
+    <input type="text" ng-model="message">
+    <button ng-click="sendMessage(bro, message)">Send a message to this bro</button>
+  </li>
+</ul>
+
+<h1>Your messages</h1>
+
+<ul>
+  <li ng-repeat="message in messages">
+    <h4>{{message.text}}</h4>
+    <p>from {{message.sender.displayName}}</p>    
+
+  </li>
+</ul>

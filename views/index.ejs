@@ -13,13 +13,25 @@
   <script src="client/js/app.js"></script>
   <script src="client/js/controllers/home.js"></script>
   <script src="client/js/controllers/login.js"></script>
+  <script src="client/js/controllers/nav.js"></script>
+  <script src="client/js/controllers/user.js"></script>
+
+  <script src="client/js/services/UserService.js"></script>
 
 </head>
 <body>
   <h1>Cool Messages, Bro</h1>
 
-  <button ui-sref="home">Home</button>
-  <button ui-sref="login">Login</button>
+  <div class="nav" ng-controller="navCtrl">
+    <div ng-if="!isAuthenticated()">
+      <button ui-sref="home">Home</button>
+      <button ui-sref="login">Login</button>
+    </div>
+    <div ng-if="isAuthenticated()">
+      <button ui-sref="user">My Page</button>
+      <button ng-click="logout()">Logout</button>
+    </div>
+  </div>
 
   <div ui-view></div>
 

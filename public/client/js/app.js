@@ -16,6 +16,11 @@ angular
         templateUrl: 'client/templates/login.html',
         controller: 'loginCtrl'
       })
+      .state('user', {
+        url: '/user',
+        templateUrl: 'client/templates/user.html',
+        controller: 'userCtrl'
+      })
 
     $authProvider.facebook({
       clientId: '416238451899324'
