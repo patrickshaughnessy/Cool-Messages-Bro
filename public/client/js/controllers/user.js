@@ -13,19 +13,16 @@ angular
     });
 
     UserService.populateBros().then(function(res){
-      console.log('inside bros', res.data);
       $scope.bros = res.data;
     })
 
     $scope.sendMessage = function(broId, message){
-      console.log(broId);
       UserService.sendMessage(broId, message).then(function(res){
         console.log(res);
       })
     }
 
     UserService.getMessages().then(function(res){
-      console.log('messages', res.data);
       var user = res.data.user;
       console.log('user', user)
 

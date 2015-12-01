@@ -33,13 +33,5 @@ angular
     $authProvider.github({
       clientId: 'a2707f585423b8d4d066'
     });
-
-    // $authProvider.linkedin({
-    //   clientId: 'LinkedIn Client ID'
-    // });
-
-    // $authProvider.instagram({
-    //   clientId: 'Instagram Client ID'
-    // });
-
+    
   }])

@@ -3,7 +3,6 @@
 angular
   .module('app')
   .controller('loginCtrl', ['$scope', '$auth', '$state', function($scope, $auth, $state){
-    console.log('loginCtrl')
 
     $scope.authenticate = function(provider){
       $auth.authenticate(provider)

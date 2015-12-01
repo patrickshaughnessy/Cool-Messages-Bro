@@ -32,7 +32,6 @@ userSchema.methods.createJWT = function(){
 }
 
 userSchema.statics.sendMessage = function(senderId, receiverId, message, cb){
-  console.log('inside static', senderId, receiverId);
 
   User.findById(senderId, function(err, sendingBro){
 
